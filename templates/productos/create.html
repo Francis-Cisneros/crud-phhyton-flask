@@ -1,0 +1,52 @@
+{% include 'header.html' %}
+{% with messages=get_flashed_messages() %}
+{% if messages %}
+    <div class="alert alert-danger" role="alert">
+        {% for message in messages %}
+        {{ message }}
+        
+        {% endfor %}
+    </div>
+{% endif %}
+{% endwith %}
+<br>
+<form method="post" action="/store" enctype="multipart/form-data">
+    <div class="card">
+        <div class="card-header">
+            GRABACIÓN DE PRODUCTOS
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Mercaderia</h5>
+            <p class="card-text">
+            <div class="form-group">
+                <label for="txtcodigo">Codigo</label>
+                <input id="txtcodigo" class="form-control" type="text" name="txtcodigo" value="{{ cod}}">
+            </div>
+            <div class="form-group">
+                <label for="txtdescripcion">Descripcion</label>
+                <input id="txtdescripcion" class="form-control" type="text" name="txtdescripcion">
+            </div>
+            <div class="form-group">
+                <label for="cbocategoria">Clase</label>
+                <select class="custom-select" name="cbocategoria" id="cbocategoria">
+                    <option value="Dulce">Dulces</option>
+                    <option value="Frutos Verdes">Frutos Verdes</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="txtprecio">Costo</label>
+                <input id="txtprecio" class="form-control" type="number" name="txtprecio">
+            </div>
+            <div class="form-group">
+                <label for="txtcantidad">Cantidad</label>
+                <input id="txtcantidad" class="form-control" type="number" name="txtcantidad">
+            </div>
+            <div class="form-group">
+                <input class="btn btn-primary btn-lg btn-block" type="submit" value="Registrar">
+                <a class="btn btn-secondary btn-lg btn-block" href="{{url_for('index')}}">Volver</a>
+            </div>
+            </p>
+        </div>
+    </div>
+</form>
+{% include 'footer.html' %}

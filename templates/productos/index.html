@@ -1,0 +1,36 @@
+{% include 'header.html' %}
+    <br>
+    <a class="btn btn-success" href="/generar">Grabación Producto</a>
+    <br>
+    <br>
+    <table class="table table-light">
+        <thead class="thead-light">
+            <tr>
+                <th>Codigo</th>
+                <th>Definición</th>
+                <th>Clase</th>
+                <th>Costo</th>
+                <th>Cantidad</th>
+                <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for producto in producto %}
+            <tr>
+                <td>{{producto[0]}}</td>
+                <td>{{producto[1]}}</td>
+                <td>{{producto[2]}}</td>
+                <td>{{producto[3]}}</td>
+                <td>{{producto[4]}}</td>
+                <td>
+                    <a class="btn btn-warning" href="/edit/{{producto[0]}}">Update</a>
+                    |
+                    <a onclick="return confirm('¿Esta seguro que quiere eliminar el registro?')" class="btn btn-danger" href="/destroy/{{producto[0]}}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% include 'footer.html' %}   
+
